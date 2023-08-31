@@ -1,27 +1,28 @@
-// set up local endpoint
-
-const URL_ENDPOINT = 'http://localhost:3000/newEnglandButterflies'
-
-//  get and display file (to see if it is linked)
-// $.get(URL_ENDPOINT).then(data => console.log(data))
+// mockApi endpoint
+const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of_New_England_API/newEnglandButterflies'
 
 // Build Table
-$.get(URL_ENDPOINT).then(data => {
-    data.map(newEnglandButterflies => {
-        $('tbody').append(
-            $(`
-            <tr>
-                <td>${newEnglandButterflies.id}</td>
-                <td>${newEnglandButterflies.name}</td>
-                <td>${newEnglandButterflies.familyName}</td>
-                <td>${newEnglandButterflies.commonExample}</td>
-                <td><button onclick="updateButterfly(${newEnglandButterflies.id})">Update</button></td>
-                <td><button onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
-            </tr>
-            `)
-        )
+buildTable();
+function buildTable() {
+    $.get(URL_ENDPOINT).then(data => {
+        $('tbody').empty();
+        data.map(newEnglandButterflies => {
+
+            $('tbody').append(
+                $(`
+                <tr>
+                    <td>${newEnglandButterflies.id}</td>
+                    <td>${newEnglandButterflies.name}</td>
+                    <td>${newEnglandButterflies.familyName}</td>
+                    <td>${newEnglandButterflies.commonExample}</td>
+                    <td><button onclick="updateButterfly(${newEnglandButterflies.id})">Update</button></td>
+                    <td><button onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
+                </tr>
+                `)
+            )
+        })
     })
-})
+}
 
 function addNewButterflyForm() {
     $('#add').remove();
@@ -45,19 +46,26 @@ function addNewButterflyForm() {
                 <input id ="commonExample" placeholder="Common Example"/>
             </div>
 
-            <button onclick="postButterfly()">Submit</button>
+            <button id="addButterfly">Submit</button>
         </form>
         `)
     )
+    $("#addButterfly").on("click", e => {
+        e.preventDefault()
+        postButterfly()
+    })
 }
+
 
 // add to db
 function postButterfly() {
+
     $.post(URL_ENDPOINT, {
         name: $('#name').val(),
         familyName: $('#familyName').val(),
         commonExample: $('#commonExample').val()
     })
+        .then(buildTable)
 }
 
 // update form
@@ -93,15 +101,25 @@ function updateButterfly(id) {
                 <input id ="updateCommonExample" placeholder="Common Example"/>
             </div>
 
-            <button id="updateButterfly" onclick="putButterfly('${id}')">Submit</button>
+            <button onclick="putButterfly(id)">Submit</button>
+
         </form>
         `)
     )
+    // <button id="updateButterfly" onclick="putButterfly(e, '${id}')">Submit</button>
+    // $("#updateButterfly").on("click", e => {
+    //     e.preventDefault()
+    //     putButterfly()
+    // })
+
 }
+
+// function putButterfly(e, id) {
+// e.preventDefault();
 
 // update db
 function putButterfly(id) {
-    $.ajax(`${URL_ENDPOINT}/${id}`,  {
+    $.ajax(`${URL_ENDPOINT}/${id}`, {
         method: 'PUT',
         data: {
             name: $('#updateName').val(),
@@ -111,11 +129,34 @@ function putButterfly(id) {
     })
 }
 
+$("#addButterfly").on("click", e => {
+    e.preventDefault()
+    putButterfly()
+})
+
+
 // delete db
 function deleteButterfly(id) {
     $('#add').remove();
+    //     $.ajax(`${URL_ENDPOINT}/${id}`, {
+    //         method: 'DELETE',
+    //         headers: { 'content-type': 'application/json' },
+    //     });
+    // }
+    // })
 
-    $.ajax(`${URL_ENDPOINT}/${id}`, {
+    // ===========================================================
+
+    fetch(`${URL_ENDPOINT}/${id}`, {
         method: 'DELETE',
-    });
+    }).then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        // handle error
+    }).then(task => {
+        // Do something with deleted task
+    }).catch(error => {
+        // handle error
+    })
 }
