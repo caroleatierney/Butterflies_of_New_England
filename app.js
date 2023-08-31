@@ -15,7 +15,7 @@ $.get(URL_ENDPOINT).then(data => {
                 <td>${newEnglandButterflies.name}</td>
                 <td>${newEnglandButterflies.familyName}</td>
                 <td>${newEnglandButterflies.commonExample}</td>
-                <td><button onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
+                <td><button onclick="updateButterfly(${newEnglandButterflies.id})">Update</button></td>
                 <td><button onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
             </tr>
             `)
@@ -61,13 +61,19 @@ function postButterfly() {
 }
 
 // update form
-function updateButterflyForm(id) {
+function updateButterfly(id) {
     $('#add').remove();
+
+    $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) {
+        $("#updateName").val(newEnglandButterflies.name);
+        $("#updateFamilyName").val(newEnglandButterflies.familyName);
+        $("#updateCommonExample").val(newEnglandButterflies.commonExample);
+    });
 
     $('#formCont').append(
         $(`
         <form>
-        <h1>Update a butterfly</h1>
+            <h1>Update a butterfly</h1>
             <div>
                 <label for="updateId">Butterly Id</label>
                 <input id ="updateId" placeholder="Butterly Id" value="${id}"/>
@@ -75,20 +81,19 @@ function updateButterflyForm(id) {
 
             <div>
                 <label for="updateName">Butterly Name</label>
-                // <input id ="updateName" placeholder="Butterly Name" value="${id}"/>
                 <input id ="updateName" placeholder="Butterly Name"/>
             </div>
             <div>
                 <label for="updateFamilyName">Family Name</label>
-                <input id ="updateFamilyName" placeholder="Family Name" value="${id}"/>
+                <input id ="updateFamilyName" placeholder="Family Name"/>
             </div>
 
             <div>
                 <label for="updateCommonExample">Common Example</label>
-                <input id ="updateCommonExample" placeholder="Common Example" value="${id}"/>
+                <input id ="updateCommonExample" placeholder="Common Example"/>
             </div>
 
-            <button onclick="putButterfly(id)">Submit</button>
+            <button id="updateButterfly" onclick="putButterfly('${id}')">Submit</button>
         </form>
         `)
     )
@@ -96,12 +101,12 @@ function updateButterflyForm(id) {
 
 // update db
 function putButterfly(id) {
-    $.ajax(`{$URL_ENDPOINT}/${id}`,  {
+    $.ajax(`${URL_ENDPOINT}/${id}`,  {
         method: 'PUT',
         data: {
-            name: $('#name').val(),
-            familyName: $('#familyName').val(),
-            commonExample: $('#commonExample').val()
+            name: $('#updateName').val(),
+            familyName: $('#updateFamilyName').val(),
+            commonExample: $('#updateCommonExample').val()
         }
     })
 }
@@ -110,11 +115,7 @@ function putButterfly(id) {
 function deleteButterfly(id) {
     $('#add').remove();
 
-    // works
-    // let del = $.ajax(`{URL_ENDPOINT}/${id}`)
-    // console.log('del', del)
-
-    $.ajax(`{URL_ENDPOINT}/${id}`, {
+    $.ajax(`${URL_ENDPOINT}/${id}`, {
         method: 'DELETE',
     });
 }

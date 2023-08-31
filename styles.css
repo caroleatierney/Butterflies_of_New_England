@@ -1,5 +1,10 @@
 #contMain {
     text-align: center;
-    color: bisque;
-    background-color: rgba(137, 43, 226, 0.291);
+    color: rgb(243, 147, 13);
+    background-image: url("./images/monarch_flower.jpg");
+    opacity: 0.7;
+}
+
+#table {
+    color: white;   
 }

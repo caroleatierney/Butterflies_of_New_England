@@ -16,3 +16,5 @@ Card, Accordion, Dropdowns, Popover, Tooltips
 Form handling???
 -Dups
 -required fields
+
+                // <td><button onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
