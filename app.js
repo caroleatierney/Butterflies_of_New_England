@@ -120,8 +120,6 @@ function updateButterflyForm(id) {
 
 function putButterfly(id) {
 
-    console.log("URL!!!", `${URL_ENDPOINT}/${id}`)
-
     fetch(`${URL_ENDPOINT}/${id}`, {
         method: 'PUT',
         data: {
