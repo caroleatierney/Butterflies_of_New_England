@@ -4,30 +4,39 @@ const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of
 // Build Table
 buildTable();
 function buildTable() {
+    $('#add').empty(); // remove add button
     $.get(URL_ENDPOINT).then(data => {
         $('tbody').empty();
         data.map(newEnglandButterflies => {
 
             $('tbody').append(
                 $(`
-                <tr>
-                    <td>${newEnglandButterflies.id}</td>
-                    <td>${newEnglandButterflies.name}</td>
-                    <td>${newEnglandButterflies.familyName}</td>
-                    <td>${newEnglandButterflies.commonExample}</td>
-                    <td><button onclick="updateButterfly(${newEnglandButterflies.id})">Update</button></td>
-                    <td><button onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
-                </tr>
-                `)
-            )
+                    <tr>
+                        <td>${newEnglandButterflies.id}</td>
+                        <td>${newEnglandButterflies.name}</td>
+                        <td>${newEnglandButterflies.familyName}</td>
+                        <td>${newEnglandButterflies.commonExample}</td>
+                        <td><button id="updateButterfly" onclick="updateButterfly(${newEnglandButterflies.id})">Update</button></td>
+                        <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
+                    </tr>
+                `))
         })
+        $('#add').append(
+            $(`
+                <button onclick = "addNewButterflyForm()">Add a new butterfly</button>
+            `)
+        );
     })
 }
 
-function addNewButterflyForm() {
-    $('#add').remove();
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// = = = = = = =  Add Butterfly logic  = = = = = = = = = =
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    $('#formCont').append(
+function addNewButterflyForm() {
+    $('#add').empty(); // remove add button
+    $('#formCont').empty(); // do not allow form to keep adding if user keeps clicking it
+    $('#formCont').append( //add the form to the form container
         $(`
         <form>
         <h1>Add a new butterfly</h1>
@@ -56,8 +65,6 @@ function addNewButterflyForm() {
     })
 }
 
-
-// add to db
 function postButterfly() {
 
     $.post(URL_ENDPOINT, {
@@ -65,28 +72,29 @@ function postButterfly() {
         familyName: $('#familyName').val(),
         commonExample: $('#commonExample').val()
     })
-        .then(buildTable)
+    .then(buildTable)
+    $('#formCont').empty()
 }
 
-// update form
-function updateButterfly(id) {
-    $('#add').remove();
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// = = = = = =   Update Butterfly logic  = = = = = = = = =
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) {
+function updateButterfly(id) {
+    $('#add').empty(); // remove add button
+    $('#formCont').empty(); // do not allow form to keep adding if user keeps clicking buttons
+
+    $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) { //get data to pre-populate form
         $("#updateName").val(newEnglandButterflies.name);
         $("#updateFamilyName").val(newEnglandButterflies.familyName);
         $("#updateCommonExample").val(newEnglandButterflies.commonExample);
     });
 
-    $('#formCont').append(
+    $('#formCont').append( //add the form to the form container
         $(`
         <form>
             <h1>Update a butterfly</h1>
-            <div>
-                <label for="updateId">Butterly Id</label>
-                <input id ="updateId" placeholder="Butterly Id" value="${id}"/>
-            </div>
-
+            
             <div>
                 <label for="updateName">Butterly Name</label>
                 <input id ="updateName" placeholder="Butterly Name"/>
@@ -114,10 +122,6 @@ function updateButterfly(id) {
 
 }
 
-// function putButterfly(e, id) {
-// e.preventDefault();
-
-// update db
 function putButterfly(id) {
     $.ajax(`${URL_ENDPOINT}/${id}`, {
         method: 'PUT',
@@ -129,23 +133,19 @@ function putButterfly(id) {
     })
 }
 
-$("#addButterfly").on("click", e => {
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// = = = = = =   Delete Butterfly logic  = = = = = = = = =
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+// using id from delete button, set an event for delete
+// prevent default of button refresh
+$("#deleteButterfly").on("click", e => {
     e.preventDefault()
-    putButterfly()
+    deleteButterfly()
 })
 
-
-// delete db
 function deleteButterfly(id) {
-    $('#add').remove();
-    //     $.ajax(`${URL_ENDPOINT}/${id}`, {
-    //         method: 'DELETE',
-    //         headers: { 'content-type': 'application/json' },
-    //     });
-    // }
-    // })
-
-    // ===========================================================
+    $('#formCont').empty(); // do not allow form to keep adding if user keeps clicking buttons
 
     fetch(`${URL_ENDPOINT}/${id}`, {
         method: 'DELETE',
@@ -153,10 +153,5 @@ function deleteButterfly(id) {
         if (res.ok) {
             return res.json();
         }
-        // handle error
-    }).then(task => {
-        // Do something with deleted task
-    }).catch(error => {
-        // handle error
-    })
+    })  .then(buildTable)
 }
