@@ -23,12 +23,36 @@ Links to include on about page
 Instead of a table, look into organizing the students differently with bootstrap:
 Card, Accordion, Dropdowns, Popover, Tooltips
 
-Form handling???
-
--Dups
--required fields
-
-
-
-delete works - needs to refresh!
-update not working anymore and then need refresh!
+Save here to refresh
+[
+ {
+  "name": "Skippers",
+  "familyName": "Hesperiidae",
+  "commonExample": "Hobomok Skipper",
+  "id": 1
+ },
+ {
+  "name": "Swallowtails",
+  "familyName": "Papilioninae",
+  "commonExample": "Eastern Tiger Swallowtail",
+  "id": 2
+ },
+ {
+  "name": "Gossamer-wing",
+  "familyName": "Lycaenidae",
+  "commonExample": "American Copper",
+  "id": 3
+ },
+ {
+  "name": "Brush-footed",
+  "familyName": "Nymphalidae",
+  "commonExample": "Monarch",
+  "id": 4
+ },
+ {
+  "name": "Whites and Sulphurs",
+  "familyName": "Pieridae",
+  "commonExample": "Orange-barred Sulphur",
+  "id": 5
+ }
+]

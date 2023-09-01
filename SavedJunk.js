@@ -64,6 +64,12 @@ function postButterfly() {
 function updateButterflyForm(id) {
     $('#add').remove();
 
+    $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) {
+        $("#updateName").val(newEnglandButterflies.name);
+        $("#updateFamilyName").val(newEnglandButterflies.familyName);
+        $("#updateCommonExample").val(newEnglandButterflies.commonExample);
+    });
+
     $('#formCont').append(
         $(`
         <form>
@@ -118,3 +124,60 @@ function deleteButterfly(id) {
         method: 'DELETE',
     });
 }
+
+
+    // $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) { //get data to pre-populate form
+    //     $("#updateName").val(newEnglandButterflies.name);
+    //     $("#updateFamilyName").val(newEnglandButterflies.familyName);
+    //     $("#updateCommonExample").val(newEnglandButterflies.commonExample);
+    // });
+
+    // $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) { //get data to pre-populate form
+    //     $("#updateName").val(newEnglandButterflies.name);
+    //     $("#updateFamilyName").val(newEnglandButterflies.familyName);
+    //     $("#updateCommonExample").val(newEnglandButterflies.commonExample);
+    // });
+
+    // update db
+    // function putButterfly(id) {
+    //     $.ajax(`{$URL_ENDPOINT}/${id}`, {
+    //         method: 'PUT',
+    //         data: {
+    //             name: $('#updateName').val(),
+    //             familyName: $('#updateFamilyName').val(),
+    //             commonExample: $('#updateCommonExample').val()
+    //         }
+    //     })
+    // }
+
+    //     $.put(URL_ENDPOINT/id, {
+//         name: $('#updateName').val(),
+//         familyName: $('#updateFamilyName').val(),
+//         commonExample: $('#updateCommonExample').val()
+//     })
+//     .then(buildTable)
+//     $('#formCont').empty()
+// }
+
+    // function putButterfly(id) {
+    //     $.put(`${URL_ENDPOINT}/${id}`, {
+    //         id: $('#id').val(),
+    //         name: $('#updateName').val(),
+    //         familyName: $('#updateFamilyName').val(),
+    //         commonExample: $('#updateCommonExample').val()
+    //     })
+    //     .then(buildTable)
+    //     $('#formCont').empty()
+    // }
+
+
+// function putButterfly(id) {
+//     $.ajax(`${URL_ENDPOINT}/${id}`, {
+//         method: 'PUT',
+//         data: {
+//             name: $('#updateName').val(),
+//             familyName: $('#updateFamilyName').val(),
+//             commonExample: $('#updateCommonExample').val(),
+//         }
+//     })
+// }

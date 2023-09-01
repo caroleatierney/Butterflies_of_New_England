@@ -16,7 +16,7 @@ function buildTable() {
                         <td>${newEnglandButterflies.name}</td>
                         <td>${newEnglandButterflies.familyName}</td>
                         <td>${newEnglandButterflies.commonExample}</td>
-                        <td><button id="updateButterfly" onclick="updateButterfly(${newEnglandButterflies.id})">Update</button></td>
+                        <td><button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
                         <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
                     </tr>
                 `))
@@ -79,22 +79,21 @@ function postButterfly() {
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // = = = = = =   Update Butterfly logic  = = = = = = = = =
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-function updateButterfly(id) {
+function updateButterflyForm(id) {
     $('#add').empty(); // remove add button
     $('#formCont').empty(); // do not allow form to keep adding if user keeps clicking buttons
 
-    $.get(URL_ENDPOINT + "/" + id, function (newEnglandButterflies) { //get data to pre-populate form
+    // Set data in form to what is stored in db
+    $.get(`${URL_ENDPOINT}/${id}`, function (newEnglandButterflies) {
         $("#updateName").val(newEnglandButterflies.name);
         $("#updateFamilyName").val(newEnglandButterflies.familyName);
         $("#updateCommonExample").val(newEnglandButterflies.commonExample);
     });
 
-    $('#formCont').append( //add the form to the form container
+    $('#formCont').append( //add the form to the form container - not allowing id change
         $(`
         <form>
-            <h1>Update a butterfly</h1>
-            
+            <h1>Update a butterfly</h1>          
             <div>
                 <label for="updateName">Butterly Name</label>
                 <input id ="updateName" placeholder="Butterly Name"/>
@@ -108,29 +107,35 @@ function updateButterfly(id) {
                 <label for="updateCommonExample">Common Example</label>
                 <input id ="updateCommonExample" placeholder="Common Example"/>
             </div>
-
-            <button onclick="putButterfly(id)">Submit</button>
-
+            <button onclick="putButterfly(${id})">Submit</button>
         </form>
         `)
     )
-    // <button id="updateButterfly" onclick="putButterfly(e, '${id}')">Submit</button>
-    // $("#updateButterfly").on("click", e => {
-    //     e.preventDefault()
-    //     putButterfly()
-    // })
-
+ 
+    $("#updateButterfly").on("click", e => {
+        e.preventDefault()
+        putButterfly()
+    })
 }
 
 function putButterfly(id) {
-    $.ajax(`${URL_ENDPOINT}/${id}`, {
+
+    console.log("URL!!!", `${URL_ENDPOINT}/${id}`)
+
+    fetch(`${URL_ENDPOINT}/${id}`, {
         method: 'PUT',
         data: {
             name: $('#updateName').val(),
             familyName: $('#updateFamilyName').val(),
-            commonExample: $('#updateCommonExample').val()
+            commonExample: $('#updateCommonExample').val(),
         }
     })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then(buildTable)
 }
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
