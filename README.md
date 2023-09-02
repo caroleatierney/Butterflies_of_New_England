@@ -42,14 +42,14 @@ Use this to refresh mockapi database just stuff in array brackets[]
             "id": 3
         },
         {
-            "image": "./images/Monarch.jpeg",
+            "image": "./images/Monarch.jpg",
             "name": "Brush-footed",
             "familyName": "Nymphalidae",
             "butterflyObserved": "Monarch",
             "id": 4
         },
         {
-            "image": "./images/Orange_Barred_Sulfur.jpeg",
+            "image": "./images/Orange_Barred_Sulphur.jpeg",
             "name": "Whites and Sulphurs",
             "familyName": "Pieridae",
             "butterflyObserved": "Orange-barred Sulphur",

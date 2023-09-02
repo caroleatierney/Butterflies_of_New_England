@@ -23,13 +23,61 @@
     <h1 id="title">New England Butterfly Log</h1>
 
     <div id="contMain" class="container">
-        <div id="add">
+        <div id="addButton">
+            <button onclick="addNewButterflyForm()">Add a new butterfly</button>
         </div>
 
         <div id = "row" class="row">
         </div>
 
         <div id="formCont">
+         
+        <form id="addForm">
+            <h1>Add a new butterfly</h1>
+            <div>
+                <label for="image">Butterly Image</label>
+                <input id="image" placeholder="Butterfly Image">
+            </div>    
+            <div>
+                <label for="name">Butterly Name</label>
+                <input id="name" placeholder="Butterfly Name">
+            </div>
+            <div>
+                <label for="familyName">Family Name</label>
+                <input id="familyName" placeholder="Family Name">
+            </div>
+            <div>
+                <label for="butterflyObserved">Butterfly Observed</label>
+                <input id="butterflyObserved" placeholder="Butterfly Observed">
+            </div>
+            <button id="addButterfly">Submit</button>
+        </form>
+
+        <form id="updateForm">
+            <h1>Update a butterfly</h1>
+            <div id="idHolder">
+                <label for="updateId">Butterly Id</label>
+                <input id="updateId" placeholder="Butterfly Id">
+            </div>
+            <div>
+                <label for="updateImage">Butterly Image</label>
+                <input id="updateImage" placeholder="Butterfly Image">
+            </div>
+            <div>
+                <label for="updateName">Butterly Name</label>
+                <input id="updateName" placeholder="Butterly Name" />
+            </div>
+            <div>
+                <label for="updateFamilyName">Family Name</label>
+                <input id="updateFamilyName" placeholder="Family Name" />
+            </div>
+            <div>
+                <label for="updateButterflyObserved">Butterfly Observed</label>
+                <input id="updateButterflyObserved" placeholder="Butterfly Observed" />
+            </div>
+            <button onclick="putButterfly()">Submit</button>
+        </form>
+
         </div>
 
         <!-- Page Links -->

@@ -6,70 +6,37 @@ const URL_ENDPOINT = 'http://localhost:3000/newEnglandButterflies'
 // Build Table
 buildTable();
 function buildTable() {
-    $('#add').empty(); // remove add button
     $('#row').empty();
+    $('#addForm').hide()
+    $('#updateForm').hide()
     $.get(URL_ENDPOINT).then(data => {
         data.map(newEnglandButterflies => {
-        $('#row').append(
-            $(`
-                <div id="column" class = "col-sm-4">
-                    <div id="card" class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="${newEnglandButterflies.image}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">${newEnglandButterflies.name}</h5>
-                            <p id="famName">Family Name: ${newEnglandButterflies.familyName}</p>
-                            <p id="commExamp">Butterfly Observed: ${newEnglandButterflies.butterflyObserved}</p>
-                            <button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
-                            <button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button>
+            $('#row').append(
+                $(`
+                    <div id="column" class = "col-sm-4">
+                        <div id="card" class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="${newEnglandButterflies.image}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">${newEnglandButterflies.name}</h5>
+                                <p id="famName">Family Name: ${newEnglandButterflies.familyName}</p>
+                                <p id="commExamp">Butterfly Observed: ${newEnglandButterflies.butterflyObserved}</p>
+                                <button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
+                                <button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button>
+                            </div>
                         </div>
-                    </div>
-                </div>  
-            `)
-        )
-    })
-        $('#add').append(
-            $(`
-                <button onclick = "addNewButterflyForm()">Add a new butterfly</button>
-            `)
-        );
+                    </div>  
+                `)
+            )
+        })
     })
 }
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // = = = = = = =  Add Butterfly logic  = = = = = = = = = =
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
 function addNewButterflyForm() {
-    $('#add').empty(); // remove add button
-    $('#formCont').empty(); // do not allow form to keep adding if user keeps clicking it
-    $('#formCont').append( //add the form to the form container
-        $(`
-        <form>
-        <h1>Add a new butterfly</h1>
-            <div>
-                <label for="image">Butterly Image</label>
-                <input id ="image" placeholder="Butterfly Image">
-            </div>
-
-            <div>
-                <label for="name">Butterly Name</label>
-                <input id ="name" placeholder="Butterfly Name"/>
-            </div>
-
-            <div>
-                <label for="familyName">Family Name</label>
-                <input id ="familyName" placeholder="Family Name"/>
-            </div>
-
-            <div>
-                <label for="butterflyObserved">Butterfly Observed</label>
-                <input id ="butterflyObserved" placeholder="Butterfly Observed"/>
-            </div>
-
-            <button id="addButterfly">Submit</button>
-        </form>
-        `)
-    )
+    $('#addButton').hide(); // hide add button
+    $('#addForm').show()
     $("#addButterfly").on("click", e => {
         e.preventDefault()
         postButterfly()
@@ -92,65 +59,41 @@ function postButterfly() {
 // = = = = = =   Update Butterfly logic  = = = = = = = = =
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 function updateButterflyForm(id) {
-    $('#add').empty(); // remove add button
-    $('#formCont').empty(); // do not allow form to keep adding if user keeps clicking buttons
+    $('#addButton').hide(); // hide add button
+    $('#idHolder').hide(); // hide id
+    $('#updateForm').show()
 
     // Set data in form to what is stored in db
     $.get(`${URL_ENDPOINT}/${id}`, function (newEnglandButterflies) {
+        $("#updateId").val(newEnglandButterflies.id);
         $("#updateImage").val(newEnglandButterflies.image);
         $("#updateName").val(newEnglandButterflies.name);
         $("#updateFamilyName").val(newEnglandButterflies.familyName);
         $("#updateButterflyObserved").val(newEnglandButterflies.butterflyObserved);
     });
 
-    $('#formCont').append( //add the form to the form container - not allowing id change
-        $(`
-        <form>
-            <h1>Update a butterfly</h1>          
-            <div>
-                <label for="updateImage">Butterly Image</label>
-                <input id ="updateImage" placeholder="Butterfly Image"/>
-            </div>
-            <div>
-                <label for="updateName">Butterly Name</label>
-                <input id ="updateName" placeholder="Butterly Name"/>
-            </div>
-            <div>
-                <label for="updateFamilyName">Family Name</label>
-                <input id ="updateFamilyName" placeholder="Family Name"/>
-            </div>
-
-            <div>
-                <label for="updateButterflyObserved">Butterfly Observed</label>
-                <input id ="updateButterflyObserved" placeholder="Butterfly Observed"/>
-            </div>
-            <button onclick="putButterfly(${id})">Submit</button>
-        </form>
-        `)
-    )
- 
     $("#updateButterfly").on("click", e => {
         e.preventDefault()
         putButterfly()
     })
 }
 
-function putButterfly(id) {
-
+function putButterfly() {
+    let id = $("#updateId").val();
     const postData = {
-        image: $('#updateImage').val(),
-        name: $('#updateName').val(),
-        familyName: $('#updateFamilyName').val(),
-        butterflyObserved: $('#updateButterflyObserved').val(),
-    }
+            image: $('#updateImage').val(),
+            name: $('#updateName').val(),
+            familyName: $('#updateFamilyName').val(),
+            butterflyObserved: $('#updateButterflyObserved').val(),
+        }
 
-    fetch(`${URL_ENDPOINT}/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(postData)
-    })
+        fetch(`${URL_ENDPOINT}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postData)
+        })
         .then(res => {
             if (res.ok) {
                 return res.json();

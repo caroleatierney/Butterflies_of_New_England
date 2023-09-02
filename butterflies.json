@@ -34,13 +34,6 @@
       "familyName": "Pieridae",
       "butterflyObserved": "Orange-barred Sulphur",
       "id": 5
-    },
-    {
-      "image": "./images/Temp_Butterfly_Image.jpg",
-      "name": "4",
-      "familyName": "5",
-      "butterflyObserved": "6",
-      "id": 6
     }
   ]
 }
