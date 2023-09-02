@@ -11,48 +11,49 @@
 Mock API
 https://mockapi.io/projects/64f0d8b68a8b66ecf77a2cc2
 
-** Later if I wanted add an array of sub family names with names & images
+I had many issues with MockAPI.io and gave up.
 
-Use this to rehresh mockapi database
-[
- {
-  "name": "Skippers",
-  "familyName": "Hesperiidae",
-  "commonExample": "Hobomok Skipper",
-  "id": 1
- },
- {
-  "name": "Swallowtails",
-  "familyName": "Papilioninae",
-  "commonExample": "Eastern Tiger Swallowtail",
-  "id": 2
- },
- {
-  "name": "Gossamer-wing",
-  "familyName": "Lycaenidae",
-  "commonExample": "American Copper",
-  "id": 3
- },
- {
-  "name": "Brush-footed",
-  "familyName": "Nymphalidae",
-  "commonExample": "Monarch",
-  "id": 4
- },
- {
-  "name": "Whites and Sulphurs",
-  "familyName": "Pieridae",
-  "commonExample": "Orange-barred Sulphur",
-  "id": 5
- }
-]
+** Later if I wanted add an array of sub family names with names
+** add dates and notes section to form
 
-
-                    <tr>
-                        <td>${newEnglandButterflies.id}</td>
-                        <td>${newEnglandButterflies.name}</td>
-                        <td>${newEnglandButterflies.familyName}</td>
-                        <td>${newEnglandButterflies.commonExample}</td>
-                        <td><button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
-                        <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
-                    </tr>
+Use this to refresh mockapi database just stuff in array brackets[]
+{
+    "newEnglandButterflies":
+    [
+        {
+            "image": "./images/Hobomok_Skipper.jpeg",
+            "name": "Skippers",
+            "familyName": "Hesperiidae",
+            "butterflyObserved": "Hobomok Skipper",
+            "id": 1
+        },
+        {
+            "image": "./images/Eastern_Tiger_Swallowtail.jpeg",
+            "name": "Swallowtails",
+            "familyName": "Papilioninae",
+            "butterflyObserved": "Eastern Tiger Swallowtail",
+            "id": 2
+        },
+        {
+            "image": "./images/American_Copper.jpeg",
+            "name": "Gossamer-wing",
+            "familyName": "Lycaenidae",
+            "butterflyObserved": "American Copper",
+            "id": 3
+        },
+        {
+            "image": "./images/Monarch.jpeg",
+            "name": "Brush-footed",
+            "familyName": "Nymphalidae",
+            "butterflyObserved": "Monarch",
+            "id": 4
+        },
+        {
+            "image": "./images/Orange_Barred_Sulfur.jpeg",
+            "name": "Whites and Sulphurs",
+            "familyName": "Pieridae",
+            "butterflyObserved": "Orange-barred Sulphur",
+            "id": 5
+        }
+    ]
+}

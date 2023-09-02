@@ -1,5 +1,7 @@
 // mockApi endpoint
-const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of_New_England_API/newEnglandButterflies'
+// const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of_New_England_API/newEnglandButterflies'
+
+const URL_ENDPOINT = 'http://localhost:3000/newEnglandButterflies'
 
 // Build Table
 buildTable();
@@ -10,13 +12,13 @@ function buildTable() {
         data.map(newEnglandButterflies => {
         $('#row').append(
             $(`
-                <div class = "col">
+                <div id="column" class = "col-sm-4">
                     <div id="card" class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="./images/monarch_flower.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="${newEnglandButterflies.image}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">${newEnglandButterflies.name}</h5>
                             <p id="famName">Family Name: ${newEnglandButterflies.familyName}</p>
-                            <p id="commExamp">Common Example: ${newEnglandButterflies.commonExample}</p>
+                            <p id="commExamp">Butterfly Observed: ${newEnglandButterflies.butterflyObserved}</p>
                             <button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
                             <button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button>
                         </div>
@@ -33,19 +35,6 @@ function buildTable() {
     })
 }
 
-        // $('tbody').empty();
-             // $('tbody').append(
-
-                    // <tr>
-                    //     <td>${newEnglandButterflies.id}</td>
-                    //     <td>${newEnglandButterflies.name}</td>
-                    //     <td>${newEnglandButterflies.familyName}</td>
-                    //     <td>${newEnglandButterflies.commonExample}</td>
-                    //     <td><button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
-                    //     <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
-                    // </tr>
-
-
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // = = = = = = =  Add Butterfly logic  = = = = = = = = = =
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -58,8 +47,13 @@ function addNewButterflyForm() {
         <form>
         <h1>Add a new butterfly</h1>
             <div>
+                <label for="image">Butterly Image</label>
+                <input id ="image" placeholder="Butterfly Image">
+            </div>
+
+            <div>
                 <label for="name">Butterly Name</label>
-                <input id ="name" placeholder="Butterly Name"/>
+                <input id ="name" placeholder="Butterfly Name"/>
             </div>
 
             <div>
@@ -68,8 +62,8 @@ function addNewButterflyForm() {
             </div>
 
             <div>
-                <label for="commonExample">Common Example</label>
-                <input id ="commonExample" placeholder="Common Example"/>
+                <label for="butterflyObserved">Butterfly Observed</label>
+                <input id ="butterflyObserved" placeholder="Butterfly Observed"/>
             </div>
 
             <button id="addButterfly">Submit</button>
@@ -85,9 +79,10 @@ function addNewButterflyForm() {
 function postButterfly() {
 
     $.post(URL_ENDPOINT, {
+        image: "./images/Temp_Butterfly_Image.jpg",
         name: $('#name').val(),
         familyName: $('#familyName').val(),
-        commonExample: $('#commonExample').val()
+        butterflyObserved: $('#butterflyObserved').val()
     })
     .then(buildTable)
     $('#formCont').empty()
@@ -102,15 +97,20 @@ function updateButterflyForm(id) {
 
     // Set data in form to what is stored in db
     $.get(`${URL_ENDPOINT}/${id}`, function (newEnglandButterflies) {
+        $("#updateImage").val(newEnglandButterflies.image);
         $("#updateName").val(newEnglandButterflies.name);
         $("#updateFamilyName").val(newEnglandButterflies.familyName);
-        $("#updateCommonExample").val(newEnglandButterflies.commonExample);
+        $("#updateButterflyObserved").val(newEnglandButterflies.butterflyObserved);
     });
 
     $('#formCont').append( //add the form to the form container - not allowing id change
         $(`
         <form>
             <h1>Update a butterfly</h1>          
+            <div>
+                <label for="updateImage">Butterly Image</label>
+                <input id ="updateImage" placeholder="Butterfly Image"/>
+            </div>
             <div>
                 <label for="updateName">Butterly Name</label>
                 <input id ="updateName" placeholder="Butterly Name"/>
@@ -121,8 +121,8 @@ function updateButterflyForm(id) {
             </div>
 
             <div>
-                <label for="updateCommonExample">Common Example</label>
-                <input id ="updateCommonExample" placeholder="Common Example"/>
+                <label for="updateButterflyObserved">Butterfly Observed</label>
+                <input id ="updateButterflyObserved" placeholder="Butterfly Observed"/>
             </div>
             <button onclick="putButterfly(${id})">Submit</button>
         </form>
@@ -137,13 +137,19 @@ function updateButterflyForm(id) {
 
 function putButterfly(id) {
 
+    const postData = {
+        image: $('#updateImage').val(),
+        name: $('#updateName').val(),
+        familyName: $('#updateFamilyName').val(),
+        butterflyObserved: $('#updateButterflyObserved').val(),
+    }
+
     fetch(`${URL_ENDPOINT}/${id}`, {
-        method: 'PUT',
-        data: {
-            name: $('#updateName').val(),
-            familyName: $('#updateFamilyName').val(),
-            commonExample: $('#updateCommonExample').val(),
-        }
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(postData)
     })
         .then(res => {
             if (res.ok) {

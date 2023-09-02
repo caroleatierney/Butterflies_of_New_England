@@ -1,0 +1,46 @@
+{
+  "newEnglandButterflies": [
+    {
+      "image": "./images/Hobomok_Skipper.jpeg",
+      "name": "Skippers",
+      "familyName": "Hesperiidae",
+      "butterflyObserved": "Hobomok Skipper",
+      "id": 1
+    },
+    {
+      "image": "./images/Eastern_Tiger_Swallowtail.jpeg",
+      "name": "Swallowtails",
+      "familyName": "Papilioninae",
+      "butterflyObserved": "Eastern Tiger Swallowtail",
+      "id": 2
+    },
+    {
+      "image": "./images/American_Copper.jpeg",
+      "name": "Gossamer-wing",
+      "familyName": "Lycaenidae",
+      "butterflyObserved": "American Copper",
+      "id": 3
+    },
+    {
+      "image": "./images/Monarch.jpg",
+      "name": "Brush-footed",
+      "familyName": "Nymphalidae",
+      "butterflyObserved": "Monarch",
+      "id": 4
+    },
+    {
+      "image": "./images/Orange_Barred_Sulphur.jpeg",
+      "name": "Whites and Sulphurs",
+      "familyName": "Pieridae",
+      "butterflyObserved": "Orange-barred Sulphur",
+      "id": 5
+    },
+    {
+      "image": "./images/Temp_Butterfly_Image.jpg",
+      "name": "4",
+      "familyName": "5",
+      "butterflyObserved": "6",
+      "id": 6
+    }
+  ]
+}

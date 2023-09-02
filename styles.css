@@ -3,14 +3,31 @@
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
-    align-content: center;
-    color: rgb(243, 147, 13);
-    background-image: url("./images/monarch_migration.jpeg");
+    /* align-content: center; */
+    color: rgb(75, 102, 190);
+    background-image: url("./images/Monarch_Migration.jpeg");
     background-repeat: no-repeat;
+    opacity: 0.97;
+    font-family: 'Amatic SC', cursive;
+    /* width: "100%"; */
+    /* height: "100%"; */
     background-size: cover;
-    opacity: 0.7;
-    width: "100%";
-    height: "100%";
+}
+
+#title {
+    font-size: 100px;
+    color :rgb(181, 233, 239);
+    -webkit-text-stroke: 1px white;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+#column {
+    display: flex;
+    justify-content: center;
 }
 
 #about {
@@ -25,14 +42,15 @@ form {
 }
 
 #contMain {
-    text-align: center;
-    justify-content: space-between;
+    /* text-align: center; */
+    /* justify-content: space-between; */
 }
 
 #card {
     padding: 5px;
     margin: 5px;
     opacity: 100%;
+    background-color: burlywood;
 }
 #famName {
     color: white;
@@ -47,5 +65,12 @@ form {
 #add, #formCont {
     justify-content: space-evenly;
     text-align: center;
-    color: black;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.card-img-top {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
 }
