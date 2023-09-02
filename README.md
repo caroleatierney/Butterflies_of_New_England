@@ -20,10 +20,7 @@ Links to include on about page
 
 ** Later if I wanted add an array of sub family names with names & images
 
-Instead of a table, look into organizing the students differently with bootstrap:
-Card, Accordion, Dropdowns, Popover, Tooltips
-
-Save here to refresh
+Use this to rehresh mockapi database
 [
  {
   "name": "Skippers",
@@ -56,3 +53,13 @@ Save here to refresh
   "id": 5
  }
 ]
+
+
+                    <tr>
+                        <td>${newEnglandButterflies.id}</td>
+                        <td>${newEnglandButterflies.name}</td>
+                        <td>${newEnglandButterflies.familyName}</td>
+                        <td>${newEnglandButterflies.commonExample}</td>
+                        <td><button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
+                        <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
+                    </tr>

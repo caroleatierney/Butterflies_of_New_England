@@ -5,22 +5,26 @@ const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of
 buildTable();
 function buildTable() {
     $('#add').empty(); // remove add button
+    $('#row').empty();
     $.get(URL_ENDPOINT).then(data => {
-        $('tbody').empty();
         data.map(newEnglandButterflies => {
-
-            $('tbody').append(
-                $(`
-                    <tr>
-                        <td>${newEnglandButterflies.id}</td>
-                        <td>${newEnglandButterflies.name}</td>
-                        <td>${newEnglandButterflies.familyName}</td>
-                        <td>${newEnglandButterflies.commonExample}</td>
-                        <td><button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
-                        <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
-                    </tr>
-                `))
-        })
+        $('#row').append(
+            $(`
+                <div class = "col">
+                    <div id="card" class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./images/monarch_flower.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">${newEnglandButterflies.name}</h5>
+                            <p id="famName">Family Name: ${newEnglandButterflies.familyName}</p>
+                            <p id="commExamp">Common Example: ${newEnglandButterflies.commonExample}</p>
+                            <button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
+                            <button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button>
+                        </div>
+                    </div>
+                </div>  
+            `)
+        )
+    })
         $('#add').append(
             $(`
                 <button onclick = "addNewButterflyForm()">Add a new butterfly</button>
@@ -28,6 +32,19 @@ function buildTable() {
         );
     })
 }
+
+        // $('tbody').empty();
+             // $('tbody').append(
+
+                    // <tr>
+                    //     <td>${newEnglandButterflies.id}</td>
+                    //     <td>${newEnglandButterflies.name}</td>
+                    //     <td>${newEnglandButterflies.familyName}</td>
+                    //     <td>${newEnglandButterflies.commonExample}</td>
+                    //     <td><button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
+                    //     <td><button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button></td>
+                    // </tr>
+
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // = = = = = = =  Add Butterfly logic  = = = = = = = = = =

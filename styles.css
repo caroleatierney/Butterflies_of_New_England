@@ -1,7 +1,7 @@
 body {
     text-align: center;
     color: rgb(243, 147, 13);
-    background-image: url("./images/monarch_flower.jpg");
+    background-image: url("./images/monarch_migration.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.7;
@@ -9,10 +9,30 @@ body {
     height: "100%";
 }
 
-#table, form {
+form {
     color: white;   
 }
 
 #contMain {
     text-align: center;
+}
+
+#card {
+    padding: 10px;
+    margin: 10px;;
+}
+#famName {
+    color: white;
+    background-color: rgb(243, 144, 24);
+}
+
+#commExamp {
+    color: white;
+    background-color: rgb(86, 144, 70);
+}
+
+#add, #formCont {
+    justify-content: space-evenly;
+    text-align: center;
+    color: black;
 }
