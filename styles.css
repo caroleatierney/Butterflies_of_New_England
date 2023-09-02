@@ -1,5 +1,9 @@
-body {
+#indexBody {
+    display: flex;
     text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
     color: rgb(243, 147, 13);
     background-image: url("./images/monarch_migration.jpeg");
     background-repeat: no-repeat;
@@ -9,17 +13,26 @@ body {
     height: "100%";
 }
 
+#about {
+ background-color: antiquewhite;
+}
+
+#aboutCont {
+    text-align: center;
+}
 form {
     color: white;   
 }
 
 #contMain {
     text-align: center;
+    justify-content: space-between;
 }
 
 #card {
-    padding: 10px;
-    margin: 10px;;
+    padding: 5px;
+    margin: 5px;
+    opacity: 100%;
 }
 #famName {
     color: white;

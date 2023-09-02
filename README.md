@@ -11,13 +11,6 @@
 Mock API
 https://mockapi.io/projects/64f0d8b68a8b66ecf77a2cc2
 
-Links to include on about page
-- http://www.nenature.com/ButterfliesByFamily.htm
-- www.butterfliesofcapecode.com
-- https://vineyardgazette.com/news/2014/02/13/great-monarch-migration-still-flies-high-film
-
-
-
 ** Later if I wanted add an array of sub family names with names & images
 
 Use this to rehresh mockapi database
