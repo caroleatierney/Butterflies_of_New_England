@@ -4,7 +4,7 @@
     justify-content: center;
     flex-wrap: wrap;
     /* align-content: center; */
-    color: rgb(75, 102, 190);
+    color: rgb(159, 111, 214);
     background-image: url("./images/Monarch_Migration.jpeg");
     background-repeat: no-repeat;
     opacity: 0.97;
@@ -16,8 +16,8 @@
 
 #title {
     font-size: 100px;
-    color :rgb(181, 233, 239);
-    -webkit-text-stroke: 1px white;
+    color: white;
+    -webkit-text-stroke: 2px #b5e9ef;
 }
 
 footer {
@@ -39,11 +39,6 @@ footer {
 }
 form {
     color: white;   
-}
-
-#contMain {
-    /* text-align: center; */
-    /* justify-content: space-between; */
 }
 
 #card {
