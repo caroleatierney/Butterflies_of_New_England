@@ -8,11 +8,32 @@
       "id": 1
     },
     {
+      "image": "./images/Eastern_Tiger_Swallowtail.jpeg",
+      "name": "Swallowtails",
+      "familyName": "Papilioninae",
+      "butterflyObserved": "Eastern Tiger Swallowtail",
+      "id": 2
+    },
+    {
+      "image": "./images/American_Copper.jpeg",
+      "name": "Gossamer-wing",
+      "familyName": "Lycaenidae",
+      "butterflyObserved": "American Copper",
+      "id": 3
+    },
+    {
       "image": "./images/Monarch.jpg",
       "name": "Brush-footed",
       "familyName": "Nymphalidae",
       "butterflyObserved": "Monarch",
       "id": 4
+    },
+    {
+      "image": "./images/Orange_Barred_Sulphur.jpeg",
+      "name": "Whites and Sulphurs",
+      "familyName": "Pieridae",
+      "butterflyObserved": "Orange-barred Sulphur",
+      "id": 5
     }
   ]
 }
