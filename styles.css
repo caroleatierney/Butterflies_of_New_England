@@ -17,18 +17,20 @@
     -webkit-text-stroke: 2px #b5e9ef;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
+.rowSpace, aboutTitle {
+    padding: 30px;
+    margin-top: 30px;
+    border-style: solid;
+    border-color: blueviolet;
 }
 
-#column {
+footer, #column {
     display: flex;
     justify-content: center;
 }
 
 #about {
- background-color: antiquewhite;
+ background-color: rgb(131, 168, 216);
 }
 
 #aboutCont {
