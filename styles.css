@@ -11,21 +11,46 @@
     background-size: cover;
 }
 
-#title {
-    font-size: 100px;
-    color: white;
-    -webkit-text-stroke: 2px #b5e9ef;
+#aboutBody {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #f39018;
+    background-image: url("./images/Butterfly_Weed.jpg");
+    background-repeat: no-repeat;
+    font-family: 'Amatic SC', cursive;
+    background-size: cover;
 }
 
-.rowSpace, aboutTitle {
+.aboutLinks {
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 20px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #f39018;
+}
+
+.orangeButtons {
+    background-color: #f39018;
+}
+
+#title {
+    font-size: 100px;
+    color: #f39018;
+    -webkit-text-stroke: 2px white;
+}
+
+.rowSpace {
     padding: 30px;
     margin: 40px;
-    border-style: solid;
-    border-width: 5px;
-    /* border-top: 10px;
-    border-left: 10px;
-    border-right: 10px;  */
-    border-color: blueviolet;
+}
+
+#aboutTitle {
+    font-size: 100px;
+    color: #f39018;
+    -webkit-text-stroke: 2px white;
 }
 
 footer, #column, #aboutHeader {
@@ -38,7 +63,7 @@ footer, #column, #aboutHeader {
  background-color: rgb(131, 168, 216);
 }
 
-#aboutCont {
+#aboutCont, header {
     text-align: center;
 }
 form {
@@ -51,14 +76,10 @@ form {
     opacity: 100%;
     background-color: burlywood;
 }
+
 #famName {
     color: white;
-    background-color: rgb(243, 144, 24);
-}
-
-#commExamp {
-    color: white;
-    background-color: rgb(86, 144, 70);
+    background-color: #f39018;
 }
 
 #add, #formCont {
