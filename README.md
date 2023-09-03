@@ -16,7 +16,7 @@ I had many issues with MockAPI.io and gave up.
 ** Later if I wanted add an array of sub family names with names
 ** add dates and notes section to form
 
-Use this to refresh mockapi database just stuff in array brackets[]
+Use this to refresh mockapi database just the stuff in array brackets[]
 {
     "newEnglandButterflies":
     [
@@ -56,4 +56,4 @@ Use this to refresh mockapi database just stuff in array brackets[]
             "id": 5
         }
     ]
-}gitstatus
+}
