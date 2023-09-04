@@ -22,9 +22,11 @@ function buildTable() {
                             <div class="card-body">
                                 <h5 class="card-title">${newEnglandButterflies.name}</h5>
                                 <p id="famName">Family Name: ${newEnglandButterflies.familyName}</p>
-                                <p id="commExamp">Butterfly Observed: ${newEnglandButterflies.butterflyObserved}</p>
-                                <button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button></td>
-                                <button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button>
+                                <p id="butterflyObserved">Butterfly Observed: ${newEnglandButterflies.butterflyObserved}</p>
+                                <div class="col" id="cardButtons">
+                                    <button id="updateButterfly" onclick="updateButterflyForm(${newEnglandButterflies.id})">Update</button>
+                                    <button id="deleteButterfly" onclick="deleteButterfly(${newEnglandButterflies.id})">Delete</button>
+                                </div>
                             </div>
                         </div>
                     </div>  

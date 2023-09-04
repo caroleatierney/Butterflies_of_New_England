@@ -1,14 +1,11 @@
 #indexBody {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    color: rgb(159, 111, 214);
+    font-family: 'Amatic SC', cursive;
     background-image: url("./images/Monarch_Migration.jpeg");
     background-repeat: no-repeat;
-    opacity: 0.97;
-    font-family: 'Amatic SC', cursive;
+    background-attachment: fixed;
     background-size: cover;
+    text-align: center;
+    justify-content: center;
 }
 
 #aboutBody {
@@ -33,13 +30,8 @@
 }
 
 .orangeButtons {
+    color: white;
     background-color: #f39018;
-}
-
-#title {
-    font-size: 100px;
-    color: #f39018;
-    -webkit-text-stroke: 2px white;
 }
 
 .rowSpace {
@@ -47,8 +39,9 @@
     margin: 40px;
 }
 
-#aboutTitle {
+.title {
     font-size: 100px;
+    text-align: center;
     color: #f39018;
     -webkit-text-stroke: 2px white;
 }
@@ -70,9 +63,21 @@ form {
     color: white;   
 }
 
+.row {
+    display: flex;
+    flex: wrap;
+    justify-content: space-evenly;
+}
+
+#cardButtons, #addButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 #card {
     padding: 5px;
-    margin: 5px;
+    margin: 20px;
     opacity: 100%;
     background-color: burlywood;
 }
