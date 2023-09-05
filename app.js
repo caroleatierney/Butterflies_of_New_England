@@ -9,7 +9,7 @@ const URL_ENDPOINT = 'http://localhost:3000/newEnglandButterflies'
 // Build Table
 buildTable();
 function buildTable() {
-    $('#row').empty();
+    $('#indexRow').empty();
     $('#addForm').hide()
     $('#updateForm').hide()
     $.get(URL_ENDPOINT).then(data => {
