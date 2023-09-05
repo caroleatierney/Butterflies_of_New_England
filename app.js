@@ -54,7 +54,7 @@ function postButterfly() {
         image: "./images/Temp_Butterfly_Image.jpg",
         name: $('#name').val(),
         familyName: $('#familyName').val(),
-        butterflyObserved: $('#butterflyObserved').val()
+        butterflyObserved: $('#bFObserved').val()
     })
     .then(buildTable)
     $('#formCont').empty()
