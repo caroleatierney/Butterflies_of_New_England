@@ -8,6 +8,27 @@
     justify-content: center;
 }
 
+/* Trying to make background transparent */
+/* #indexBody::before {
+    content: "";
+    background-image: url("./images/Monarch_Migration.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.55;
+    /* height: 100%; */
+    /* width: 100%; */
+} */
+
+h1, #addButton {
+    position: relative;
+}
+
 #aboutBody {
     display: flex;
     text-align: center;
@@ -34,7 +55,7 @@
     background-color: #f39018;
 }
 
-.rowSpace {
+.aboutRowSpace {
     padding: 30px;
     margin: 40px;
 }
@@ -60,7 +81,7 @@ form {
     color: white;   
 }
 
-.row {
+#indexRow {
     display: flex;
     flex: wrap;
     justify-content: space-evenly;
@@ -84,7 +105,7 @@ form {
     background-color: #f39018;
 }
 
-#add, #formCont {
+#formCont {
     justify-content: space-evenly;
     text-align: center;
     color: white;

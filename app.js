@@ -14,7 +14,7 @@ function buildTable() {
     $('#updateForm').hide()
     $.get(URL_ENDPOINT).then(data => {
         data.map(newEnglandButterflies => {
-            $('#row').append(
+            $('#indexRow').append(
                 $(`
                     <div id="column" class = "col-sm-4">
                         <div id="card" class="card" style="width: 18rem;">
