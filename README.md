@@ -9,7 +9,7 @@
 - Use Bootstrap and CSS to style your project.
 
 Mock API
-https://mockapi.io/projects/64f0d8b68a8b66ecf77a2cc2
+https://64f0d8b68a8b66ecf77a2cc1.mockapi.io
 
 I had many issues with MockAPI.io and gave up.
 

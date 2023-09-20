@@ -1,10 +1,7 @@
 // mockApi endpoint
-// const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of_New_England_API/newEnglandButterflies'
+const URL_ENDPOINT = 'https://64f0d8b68a8b66ecf77a2cc1.mockapi.io/Butterflies_of_New_England_API/newEnglandButterflies'
 
-const URL_ENDPOINT = 'http://localhost:3000/newEnglandButterflies'
-
-// const URL_ENDPOINT = 'https://930cb8e9-c84a-4334-8eb8-e2977e73002e.mock.pstmn.io/newEnglandButterflies'
-
+// const URL_ENDPOINT = 'http://localhost:3000/newEnglandButterflies'
 
 // Build Table
 buildTable();
@@ -63,7 +60,7 @@ function postButterfly() {
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // = = = = = =   Update Butterfly logic  = = = = = = = = =
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-function updateButterflyForm(id) {
+function updateButterflyForm(BFid) {
     $('#addButton').hide(); // hide add button
     $('#idHolder').hide(); // hide id
     $('#updateForm').show()
@@ -91,7 +88,7 @@ function putButterfly() {
             familyName: $('#updateFamilyName').val(),
             butterflyObserved: $('#updateButterflyObserved').val(),
         }
-
+        
         fetch(`${URL_ENDPOINT}/${id}`, {
             method: "PUT",
             headers: {
